@@ -74,16 +74,6 @@ class GrpcUser(User):
     host = 'localhost:50051'
 
     def on_start(self):
-        options = [
-            ('grpc.max_receive_message_length', 100 * 1024 * 1024),
-            ('grpc.max_send_message_length', 100 * 1024 * 1024),
-            ('grpc.default_timeout_ms', 60000),
-            ('grpc.keepalive_time_ms', 10000),
-            ('grpc.keepalive_timeout_ms', 5000),
-            ('grpc.keepalive_permit_without_calls', True),
-            ('grpc.http2.max_pings_without_data', 0),
-            ('grpc.enable_http_proxy', False)
-        ]
         self.channel = grpc.insecure_channel(self.host)
         self.stub = GlossaryServiceStub(channel=self.channel)
       
