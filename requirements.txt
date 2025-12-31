@@ -1,0 +1,4 @@
+locust
+requests
+grpcio
+grpcio-tools

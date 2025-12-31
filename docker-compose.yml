@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  glossary-rest:
+    image: sarkiisov/fastapi-task:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./db/glossary.db:/app/glossary.db
+    restart: unless-stopped
+  glossary-grpc:
+    image: sarkiisov/protobuf-task:latest
+    ports:
+      - "50051:50051"
+    volumes:
+      - ./db/glossary.db:/app/glossary.db
+    restart: unless-stopped
